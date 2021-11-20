@@ -1,11 +1,20 @@
 # tweetphus
 A web interface to crawl users from Twitter platform in easy way.
 
+### How run this code?
 
-To see the web interface, you just need to run the following command
+1. Go to the `.env` folder create .tweepy file and copy the following variables then replace * with your twitter developer information.
+```
+CONSUMER_KEY="*"
+CONSUMER_SECRET="*"
+ACCESS_TOKEN="*"
+ACCESS_TOKEN_SECRET="*"
+```
+2. Go to the main folder and run the following command
+
 ``` docker-compose up --build ```
 
-Then open the browser at http://0.0.0.0:8000
+3. Open the browser at http://0.0.0.0:8000
 
 
 ### How this version work?
