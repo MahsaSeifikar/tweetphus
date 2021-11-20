@@ -1,0 +1,16 @@
+# Postgre
+# ------------------------------------------------------------------------------
+psycopg2-binary
+SQLAlchemy==1.2.8
+
+# Celery
+# ------------------------------------------------------------------------------
+kombu==4.6.9
+kombu-sqlalchemy
+celery==4.4.2
+eventlet
+dnspython
+requests
+Django>=2.2
+redis
+tweepy

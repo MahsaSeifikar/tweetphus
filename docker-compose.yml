@@ -1,0 +1,46 @@
+version: "3"
+   
+services:
+
+  postgres:
+    image: postgres:9.6-alpine
+    volumes:
+      - ./data/db:/var/lib/postgresql/data/
+    env_file:
+      - ./.envs/.postgres
+    ports:
+      - 5432:5432
+
+  web:
+    build:
+      context: .
+      dockerfile: ./dockers/api/Dockerfile
+    command: sh /run_web.sh
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./.envs/.web
+      - ./.envs/.postgres
+    depends_on:
+      - postgres
+
+
+  redis:
+    image: redis:alpine
+
+  celery:
+    restart: always
+    build:
+      context: .
+      dockerfile: ./dockers/celery/Dockerfile
+    command: sh /run_celery.sh
+    volumes:
+      - ./api:/api
+    env_file:
+      - ./.envs/.tweepy
+      - ./.envs/.web
+      - ./.envs/.postgres
+    depends_on:
+      - postgres

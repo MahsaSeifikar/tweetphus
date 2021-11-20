@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <ul>
+    <li>
+      <a href="{% url 'simple_upload' %}">Simple Upload</a>
+    </li>
+  </ul>
+
+  <ul>
+    {% if users_count %}
+    <p>The number of users processed by system is {{users_count}}</a></p>
+    {% endif %}
+  </ul>
+  <ul>
+    {% if starting_time %}
+    <p>The crawller is started at {{starting_time}}</a></p>
+    {% endif %}
+  </ul>
+  <ul>
+    {% if latest_time %}
+    <p>The last crawled time is {{latest_time}}</a></p>
+    {% endif %}
+  </ul>
+
+{% endblock %}

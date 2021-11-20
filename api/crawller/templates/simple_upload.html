@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="myfile"/>
+    <button type="submit" name="submit" value=1>Upload</button>
+    <button type="crawl" name="crawl" value=1>Crawl</button>
+  </form>
+
+  {% if uploaded_file_url %}
+    <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
+  {% endif %}
+
+  {% if user_id_set %}
+    <p>these users ids start to crawl from twitter: {{ user_id_set }}</a></p>
+  {% endif %}
+  <!-- <a href="{{ user_id_set }}"></a> -->
+  <p><a href="{% url 'home' %}">Return to home</a></p>
+{% endblock %}
