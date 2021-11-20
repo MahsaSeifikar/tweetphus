@@ -14,7 +14,7 @@ services:
   web:
     build:
       context: .
-      dockerfile: ./dockers/api/Dockerfile
+      dockerfile: ./dockers/web/Dockerfile
     command: sh /run_web.sh
     volumes:
       - .:/code

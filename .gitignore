@@ -76,6 +76,7 @@ target/
 
 # Jupyter Notebook
 .ipynb_checkpoints
+.ipynb
 
 # IPython
 profile_default/
@@ -137,4 +138,5 @@ api/crawller/migrations/
 /data
 *.sqlite3
 
-.envs
+.envs/.tweepy
+.ipynb

@@ -19,18 +19,14 @@ api = tweepy.API(auth, wait_on_rate_limit=True)
 def crawl_user(user_id):
     sample_user = {"followers":[], "friends":[]}
     try:
-        c = 0
-        for follower in tweepy.Cursor(api.get_followers_id, user_id=user_id).items(50000):
+        for follower in tweepy.Cursor(api.get_follower_ids, user_id=user_id, count=5000).pages(2):
             sample_user["followers"].extend(follower)
-            c+= 1
         
-        print(f"{c} pages ==> {user_id} followers: {len(sample_user['followers'])}")
+        print(f"{user_id} followers: {len(sample_user['followers'])}")
         
-        c = 0
-        for friend in tweepy.Cursor(api.get_friends, user_id=user_id).items(50000):
+        for friend in tweepy.Cursor(api.get_friend_ids, user_id=user_id, count=5000).pages(2):
             sample_user["friends"].extend(friend)
-            c += 1
-        print(f"{c} pages ==> {user_id} friends: {len(sample_user['friends'])}")
+        print(f"friends: {len(sample_user['friends'])}")
     except Exception as e:
         logger.error(e)
 

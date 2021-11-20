@@ -4,7 +4,7 @@
 set -o errexit
 set -o nounset
 
-sleep 10
+sleep 20
 python3 api/manage.py makemigrations &&
 python3 api/manage.py migrate && 
 

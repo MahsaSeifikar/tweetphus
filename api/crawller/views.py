@@ -28,13 +28,12 @@ def home(request):
         users_count = User.objects.all().count()
         latest_time = User.objects.order_by('-saved_at')[0]
         first_time = User.objects.order_by('saved_at')[0]
+
+        return render(request, 'home.html', { 'users_count': users_count, 
+            "starting_time":first_time.saved_at, "latest_time":latest_time.saved_at})
     except Exception as e:
         logger.error(e)
-        users_count = 0
-        latest_time = first_time = None
-
-    return render(request, 'home.html', { 'users_count': users_count, 
-            "starting_time":first_time.saved_at, "latest_time":latest_time.saved_at})
+    return render(request, 'home.html', { 'users_count': 0})
 
 
 
